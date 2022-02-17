@@ -1,0 +1,19 @@
+Календарь = 
+Var _dates = CALENDARAUTO()
+VAR _output =
+    ADDCOLUMNS (
+        _dates,
+        "Год", YEAR ( [Date] ),
+        "Мес.", FORMAT ( [Date], "MMM." ),
+        "Номер месяца", MONTH ( [Date] ),
+        "Квартал", "Q." & QUARTER ( [Date] ),
+        "Неделя года", WEEKNUM ( [Date], 2 ),
+        "День месяца", DAY ( [Date] ),
+        "День недели", FORMAT ( [Date], "DDDD" ),
+        "Номер дня недели", WEEKDAY ( [Date], 2 ),
+        "Месяц года",FORMAT([Date],"MMM-YY"),
+        "Номер месяца года",YEAR([Date])*100+MONTH([Date]),
+        "Начало года",DATE(YEAR([Date]),1,1)
+    )
+RETURN
+    _output
